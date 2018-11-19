@@ -46,3 +46,6 @@ turbine-directory.txt
 
 # IDE
 .vscode
+
+# Mac stuff
+*.DS_Store
