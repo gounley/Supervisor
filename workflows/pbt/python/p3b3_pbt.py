@@ -14,6 +14,7 @@ class P3B3PBTWorker:
         self.rank = rank
 
     def ready(self, pbt_client, model, epoch):
+        print("Ready at rank {}".format(self.rank))
         # read every n epochs, n.b. first epoch is 0
         e = epoch + 1
         return e % 2 == 0
@@ -27,6 +28,7 @@ class P3B3PBTWorker:
 
             :param metrics: the metrics in keras callback log
         """
+        print("Pack data at rank {}".format(self.rank))
         lr = float(K.get_value(model.optimizer.lr))
         data = {'lr': lr, 'score': metrics['val_loss']}
         data.update(metrics)
@@ -34,6 +36,7 @@ class P3B3PBTWorker:
         return data
 
     def update(self, epoch, pbt_client, model, data):
+        print("Update at rank {}".format(self.rank))
         lr = data['lr']
         draw = random.random()
         if draw < .5:
@@ -64,10 +67,10 @@ def truncation_select(data, score):
             idx = 0
         else:
             idx = random.randint(0, quintile - 1)
-        #print("Returning: {}".format(items[idx]))
+        print("Returning: {}".format(items[idx]))
         return items[idx]
     else:
-        #print("Returning nothing")
+        print("Returning nothing")
         return {}
 
 def init_params(params_file, comm):

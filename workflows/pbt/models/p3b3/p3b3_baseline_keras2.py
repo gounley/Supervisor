@@ -32,7 +32,9 @@ import keras_mt_shared_cnn
 
 import argparse
 
-
+from keras.models import Sequential, Model, model_from_json, model_from_yaml
+from solr_keras import CandleRemoteMonitor, TerminateOnTimeOut
+from keras.callbacks import ModelCheckpoint, CSVLogger, ReduceLROnPlateau
 
 def initialize_parameters():
 
@@ -127,7 +129,7 @@ def run_cnn( GP, train_x, train_y, test_x, test_y, callbacks,
         epochs= epochs,
         verbose= 2,
         validation_data= validation_data,
-        callbacks = [candleRemoteMonitor, timeoutMonitor]
+        callbacks = callbacks
      )
 
     return history
