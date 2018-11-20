@@ -151,16 +151,12 @@ def run(gParameters, callbacks):
     emb_l2 = gParameters[ 'emb_l2' ]
     w_l2 = gParameters[ 'w_l2' ]
 
-
-    # train_x = np.load( fpath + '/train_X.npy' )
-    # train_y = np.load( fpath + '/train_Y.npy' )
-    # test_x = np.load( fpath + '/test_X.npy' )
-    # test_y = np.load( fpath + '/test_Y.npy' )
-    train_x = np.load( '/users/j8g/candle/benchmarks/data/pilot3/p3b3_data' + '/train_X.npy' )
-    train_y = np.load( '/users/j8g/candle/benchmarks/data/pilot3/p3b3_data' + '/train_Y.npy' )
-    test_x = np.load( '/users/j8g/candle/benchmarks/data/pilot3/p3b3_data' + '/test_X.npy' )
-    test_y = np.load( '/users/j8g/candle/benchmarks/data/pilot3/p3b3_data' + '/test_Y.npy' )
-
+    path = gParameters['data_url']
+    fpath = candle.fetch_file(path + gParameters['train_data'], 'Pilot3', untar=True)
+    train_x = np.load( fpath + '/train_X.npy' )
+    train_y = np.load( fpath + '/train_Y.npy' )
+    test_x = np.load( fpath + '/test_X.npy' )
+    test_y = np.load( fpath + '/test_Y.npy' )
 
     for task in range( len( train_y[ 0, : ] ) ):
         cat = np.unique( train_y[ :, task ] )
