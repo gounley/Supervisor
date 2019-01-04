@@ -182,7 +182,8 @@ def create_parameters(param_file, ignore_sigma=False):
 
             if t == 'int':
                 params.append(IntParameter(name, int(lower), int(upper),
-                                       int(sigma)))
+                                       #int(sigma))) ### hjy
+                                       1))
             else:
                 params.append(FloatParameter(name, float(lower), float(upper),
                                        float(sigma)))
