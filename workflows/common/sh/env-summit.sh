@@ -1,24 +1,25 @@
 # LANGS Titan
 # Language settings for Titan (Swift, Python, R, Tcl, etc.)
 SWIFT_IMPL=app
-TCL=/ccs/proj/med106/gounley1/summit/tcl8.6.9
+SWIFT=/gpfs/alpine/world-shared/med106/gcc-6.4.0/swift-t-localr
 
-export R=/ccs/proj/med106/gounley1/summit/R-3.5.2/lib64/R
-export PY=/ccs/home/gounley1/summit/tensorflow-1.12-p3/anaconda3
+export TCL=/gpfs/alpine/world-shared/med106/gcc-6.4.0/tcl8.6.9
+export R=/gpfs/alpine/world-shared/med106/gcc-6.4.0/R-3.5.2/lib64/R
+export PY=/gpfs/alpine/world-shared/med106/miniconda3
+
+export PATH=$SWIFT/turbine/bin:$SWIFT/stc/bin:$TCL/bin:$PY/bin:$PATH
+
 export LD_LIBRARY_PATH=$PY/lib:$R/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/sw/summit/cuda/9.2.148/lib64:/sw/summit/gcc/6.4.0/lib64:$LD_LIBRARY_PATH
 
 # We do not export PYTHONPATH or PYTHONHOME
 # We pass them through swift-t -e, which exports them later
 # This is to avoid misconfiguring Python on the login node
 # (especially for Cobalt)
-PYTHONHOME=/ccs/home/gounley1/summit/tensorflow-1.12-p3/anaconda3
+PYTHONHOME=/gpfs/alpine/world-shared/med106/miniconda3
 
-export LD_LIBRARY_PATH=/ccs/home/gounley1/summit/tensorflow-1.12-p3/9.2.148/lib64:/sw/summit/gcc/4.8.5/lib64:LD_LIBRARY_PATH
-
-export PATH=/ccs/proj/med106/gounley1/summit/swift-t/stc/bin:$PATH
-
-# EMEWS Queues for R
-EQR=/ccs/proj/med106/gounley1/summit/EQ-R
+# EMEWS Queues for R and Python
+EQR=/gpfs/alpine/world-shared/med106/gcc-6.4.0/EQ-R
 EQPy=$WORKFLOWS_ROOT/common/ext/EQ-Py
 
 # For test output processing:
