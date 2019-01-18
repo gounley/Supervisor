@@ -1,0 +1,52 @@
+[
+  {
+    "name": "learning_rate",
+    "type": "float",
+    "lower": 0.00001,
+    "upper": 1.0,
+    "comment": "learning rate 0.00001 to 0.1"
+  },
+
+  {
+    "name": "batch_size",
+    "type": "categorical",
+    "element_type": "int",
+    "values": [ 16, 32, 48, 64, 80, 96, 112, 128 ]
+  },
+
+  {
+    "name": "epochs",
+    "type": "int",
+    "lower": 5,
+    "upper": 50
+  },
+
+  {
+    "name": "dropout",
+    "type": "float",
+    "lower": 0.0,
+    "upper": 0.9
+  },
+
+  {
+    "name": "optimizer",
+    "type": "categorical",
+    "element_type": "string",
+    "values": [ "adam", "adadelta", "sgd", "rmsprop" ]
+  },
+
+  {
+    "name": "wv_len",
+    "type": "int",
+    "lower": 5,
+    "upper": 300
+  },
+
+  {
+    "name": "attention_size",
+    "type": "int",
+    "lower": 32,
+    "upper": 1024
+  }
+]
+

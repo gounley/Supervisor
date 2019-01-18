@@ -19,7 +19,7 @@ source $SITE.cfg
 
 export EXP_DIR=/gpfs/alpine/proj-shared/med106/yoonh/experiments/$EXP_ID
 # export EXP_DIR=${EXP_DIR:-$ROOT/experiments/$EXP_ID}
-export PBT_PY="$ROOT/python/p3b3_pbt.py"
+export PBT_PY="$ROOT/python/p3b4_pbt.py"
 
 export SUPERVISOR=$( cd "$PWD/../../.."  ; /bin/pwd )
 export BENCHMARKS="$SUPERVISOR/../Benchmarks"
@@ -27,7 +27,8 @@ export BENCHMARKS="$SUPERVISOR/../Benchmarks"
 # python path common to all sites (PP)
 PP+=":$BENCHMARKS/common"
 PP+=":$SUPERVISOR/workflows/common/python"
-PP+=":$ROOT/models/p3b3"
+#PP+=":$ROOT/models/p3b4"
+PP+=":$BENCHMARKS/Pilot3/P3B4"
 export PP=$PP
 
 mkdir -p "$EXP_DIR/weights"
